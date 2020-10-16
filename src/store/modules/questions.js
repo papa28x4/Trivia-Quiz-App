@@ -28,8 +28,9 @@ const getters = {
 
 const actions = {
     allQuestions: async({ commit })=>{
-        const response = await axios.get('http://localhost:4000/results')
-        commit('SET_QUESTIONS', response.data)
+        const response = await axios.get('https://opentdb.com/api.php?amount=50&type=multiple')
+        console.log(response.data.results)
+        commit('SET_QUESTIONS', response.data.results)
     },
     changeQuestion: ({ commit }, payload)=>{
        if(payload === 'next'){
